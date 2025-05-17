@@ -1,5 +1,6 @@
 const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
+require("dotenv").config();
 
 passport.use(
   new GoogleStrategy(
@@ -9,6 +10,7 @@ passport.use(
       callbackURL: "/auth/google/callback",
     },
     (accessToken, refreshToken, profile, done) => {
+      // For simplicity, just pass the profile
       done(null, profile);
     }
   )
